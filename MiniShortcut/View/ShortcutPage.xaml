@@ -1,0 +1,144 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MiniShortcut.View.ShortcutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    DataContext="{Binding Shortcut, Source={StaticResource Locator}}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCmd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <phone:PhoneApplicationPage.Resources>
+        <ControlTemplate x:Name="ShortcutButton_wifi" TargetType="Button">
+            <Border  Background="WhiteSmoke" Width="auto" Height="auto"  BorderThickness="0.5" BorderBrush="Gray"  VerticalAlignment="Stretch">
+                <Grid >
+                    <TextBlock Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom">WIFI</TextBlock>
+                    <TextBlock Foreground="#666" HorizontalAlignment="Right" VerticalAlignment="Top" Text="{Binding status_wifi, Converter={StaticResource StatusConverter}}">关</TextBlock>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate x:Name="ShortcutButton_cellular" TargetType="Button">
+            <Border  Background="WhiteSmoke" Width="auto" Height="auto"  BorderThickness="0.5" BorderBrush="Gray"  VerticalAlignment="Stretch">
+                <Grid >
+                    <TextBlock Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom">手机数据</TextBlock>
+                    <TextBlock Foreground="#666" HorizontalAlignment="Right" VerticalAlignment="Top" Text="{Binding status_cellular, Converter={StaticResource StatusConverter}}">关</TextBlock>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate x:Name="ShortcutButton_airplanemode" TargetType="Button">
+            <Border  Background="WhiteSmoke" Width="auto" Height="auto"  BorderThickness="0.5" BorderBrush="Gray"  VerticalAlignment="Stretch">
+                <Grid >
+                    <TextBlock Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom">飞行模式</TextBlock>
+                    <TextBlock Foreground="#666" HorizontalAlignment="Right" VerticalAlignment="Top"  Text="{Binding status_airplanemode, Converter={StaticResource StatusConverter}}">关</TextBlock>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate x:Name="ShortcutButton_bluetooth" TargetType="Button">
+            <Border  Background="WhiteSmoke" Width="auto" Height="auto"  BorderThickness="0.5" BorderBrush="Gray"  VerticalAlignment="Stretch">
+                <Grid >
+                    <TextBlock Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom">蓝牙</TextBlock>
+                    <TextBlock Foreground="#666" HorizontalAlignment="Right" VerticalAlignment="Top"  Text="{Binding status_bluetooth, Converter={StaticResource StatusConverter}}">关</TextBlock>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate x:Name="ShortcutButton_location" TargetType="Button">
+            <Border  Background="WhiteSmoke" Width="auto" Height="auto"  BorderThickness="0.5" BorderBrush="Gray"  VerticalAlignment="Stretch">
+                <Grid >
+                    <TextBlock Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom">定位</TextBlock>
+                    <TextBlock Foreground="#666" HorizontalAlignment="Right" VerticalAlignment="Top"  Text="{Binding status_location, Converter={StaticResource StatusConverter}}">关</TextBlock>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate x:Name="ShortcutButton_screenrotation" TargetType="Button">
+            <Border  Background="WhiteSmoke" Width="auto" Height="auto"  BorderThickness="0.5" BorderBrush="Gray"  VerticalAlignment="Stretch">
+                <Grid >
+                    <TextBlock Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom">屏幕旋转</TextBlock>
+                    <TextBlock Foreground="#666" HorizontalAlignment="Right" VerticalAlignment="Top"  Text="{Binding status_screenrotation, Converter={StaticResource StatusConverter}}">关</TextBlock>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <!--<DataTemplate x:Key="ItemTemplate">
+            <Border  Background="WhiteSmoke" Width="175" Height="175"  BorderThickness="0.5" BorderBrush="Gray"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                <Grid >
+                    <TextBlock Foreground="#666" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding ItemName}">WIFI</TextBlock>
+                    <TextBlock Foreground="#666" HorizontalAlignment="Right" VerticalAlignment="Top"  Text="{Binding status_cellular, Converter={StaticResource StatusConverter}}">关</TextBlock>
+                </Grid>
+            </Border>
+        </DataTemplate>-->
+    </phone:PhoneApplicationPage.Resources>
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot"  Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel 包含应用程序的名称和页标题-->
+
+
+        <Grid Grid.Row="0" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+        </Grid>
+        <!--ContentPanel - 在此处放置其他内容-->
+        <Grid x:Name="ContentPanel" Grid.Row="1"  Margin="0" Background="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Template="{StaticResource ShortcutButton_wifi}" Grid.Column="0" Click="Button_Click_wifi"></Button>
+            <Button Template="{StaticResource ShortcutButton_cellular}"  Grid.Column="1"  Click="Button_Click_cellular"></Button>
+            <Button Template="{StaticResource ShortcutButton_airplanemode}" Grid.Column="2"  Click="Button_Click_airplanemode"></Button>
+            <Button Template="{StaticResource ShortcutButton_bluetooth}"  Grid.Column="0" Grid.Row="1"  Click="Button_Click_bluetooth"></Button>
+            <Button Template="{StaticResource ShortcutButton_screenrotation}" Grid.Column="1"  Grid.Row="1"  Click="Button_Click_screenrotation"></Button>
+            <Button Template="{StaticResource ShortcutButton_location}"  Grid.Column="2"  Grid.Row="1"  Click="Button_Click_location"></Button>
+        </Grid>
+
+        <!--<Grid  x:Name="ContentPanel" Grid.Row="1"  Margin="0" Background="WhiteSmoke">
+            <ListBox ItemsSource="{Binding Items}"
+                     ItemTemplate="{StaticResource ItemTemplate}"
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                     VerticalAlignment="Stretch"
+                     MaxWidth='768'>
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>-->
+    </Grid>
+
+</phone:PhoneApplicationPage>
